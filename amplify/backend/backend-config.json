@@ -35,7 +35,7 @@
       "service": "translatePermissions",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
-        ({
+        {
           "category": "auth",
           "resourceName": "issue5116ffcfe459",
           "attributes": ["UserPoolId"]
@@ -44,7 +44,7 @@
           "category": "auth",
           "resourceName": "userPoolGroups",
           "attributes": ["AdminsGroupRole", "ModeratorsGroupRole"]
-        })
+        }
       ]
     }
   }
