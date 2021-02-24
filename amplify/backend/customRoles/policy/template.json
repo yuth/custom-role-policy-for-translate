@@ -1,0 +1,41 @@
+{
+  "Parameters": {
+    "authuserPoolGroupsAdminsGroupRole": {
+      "Type": "String"
+    },
+    "authuserPoolGroupsModeratorsGroupRole": {
+      "Type": "String"
+    },
+    "convertPolicyName": {
+      "Type": "String"
+    }
+  },
+  "Resources": {
+    "TranslatePolicyAdminsPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": {
+          "Ref": "convertPolicyName"
+        },
+        "Roles": [
+          {
+            "Ref": "authuserPoolGroupsModeratorsGroupRole"
+          },
+          {
+            "Ref": "authuserPoolGroupsAdminsGroupRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["translate:TranslateText"],
+              "Resource": "*"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
