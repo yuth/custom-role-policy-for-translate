@@ -1,12 +1,18 @@
 {
   "Parameters": {
+    "authissue5116ffcfe459UserPoolId": {
+      "Type": "String"
+    },
+    "convertPolicyName": {
+      "Type": "String"
+    },
     "authuserPoolGroupsAdminsGroupRole": {
       "Type": "String"
     },
     "authuserPoolGroupsModeratorsGroupRole": {
       "Type": "String"
     },
-    "convertPolicyName": {
+    "env": {
       "Type": "String"
     }
   },
@@ -19,10 +25,26 @@
         },
         "Roles": [
           {
-            "Ref": "authuserPoolGroupsModeratorsGroupRole"
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Ref": "authissue5116ffcfe459UserPoolId"
+                },
+                "-ModeratorsGroupRole"
+              ]
+            ]
           },
           {
-            "Ref": "authuserPoolGroupsAdminsGroupRole"
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Ref": "authissue5116ffcfe459UserPoolId"
+                },
+                "-AdminsGroupRole"
+              ]
+            ]
           }
         ],
         "PolicyDocument": {
